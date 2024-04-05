@@ -1,1 +1,1 @@
-# affichage-lyc-e
+# affichage-lycée
