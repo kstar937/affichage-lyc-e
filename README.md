@@ -92,5 +92,5 @@ Y placer le texte suivant :
 ```
 
 ## Configurer le temps de rafraichissement du slide
-Pour que le Google Slide soit rafraichit pour pouvoir afficher le contenu modifié, veuillez partir dans le fichier `index.html` vers la ligne 309.
+Pour que le Google Slide soit rafraichit pour pouvoir afficher le contenu modifié, veuillez partir dans le fichier `index.html` vers la ligne 308.
 Entrez le temps souhaité, par défaut il est à 5 min. 
