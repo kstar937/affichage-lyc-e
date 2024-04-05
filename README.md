@@ -62,12 +62,16 @@ Dans la barre de recherche, tapez `localhost`, et vous allez voir votre site.
 
 ## Télécharger un système permettant d'afficher après le boot
 Dans le terminal, tapez :
+
 `sudo apt-get install unclutter`
+
 `sudo apt-get install x11-xserver-utils`
 
 ## Créer les répertoires suivants :
 Dans le terminal, tapez:
+
 `mkdir ~/.config/lxsession`
+
 `mkdir ~/.config/lxsession/LXDE-pi`
 
 ## Puis créer et éditer le fichier autostart : 
