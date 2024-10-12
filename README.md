@@ -45,6 +45,7 @@ Tapez `sudo apt-get update && sudo apt-get upgrade -y`.
 ### Téléchargez & configurer Apache2 pour le localhost (serveur web)
 
 Tapez `sudo apt install apache2 -y`.
+Tapez `sudo sudo chmod -R 777 /var/www/html`.
 
 #### Importer la page web
 Dans le projet, vous trouverez des fichier HTML/CSS/JS.
