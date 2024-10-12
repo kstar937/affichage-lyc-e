@@ -13,38 +13,14 @@ Puis booter.
 ### Vérification de l'internet
 Vérifiez si la connection internet est OK.
 
-### Initialisation
-Tapez `sudo raspi-config` dans le terminal.
-
-#### Pour changer la langue du clavier
-Choisissez `Localisation Options`.
-
-Choisissez `Keyboard Layout`.
-
-Continuez le processus de configuration tout en sélectionnant la disposition de clavier souhaitée.
-
-Dans mon cas : disposition Azerty avec clavier français.
-
-#### Change timezone
-Il sera nécessaire d’avoir une date/heure fiable sur votre écran.
-
-Choisissez `Localisation Options`.
-
-Choisissez `Timezone`.
-
-Selectionnez your Country/City.
-
-Dans mon cas : Europe/Paris.
-
 ### Mettre à jour la Pi
-
 Tapez `sudo apt-get update && sudo apt-get upgrade -y`.
 
 ## 4. Configurer le site à afficher 
 
 ### Téléchargez & configurer Apache2 pour le localhost (serveur web)
-
 Tapez `sudo apt install apache2 -y`.
+
 Tapez `sudo sudo chmod -R 777 /var/www/html`.
 
 #### Importer la page web
