@@ -58,39 +58,23 @@ Il faudra modifier les coordonnées pour obtenir la météo de la ville désiré
 ### Apercevoir le site sur le navigateur
 Dans la barre de recherche, tapez `localhost`, et vous allez voir votre site.
 
+
 ## 5. Configurer le mode Kiosque
 
-## Télécharger un système permettant d'afficher après le boot
-Dans le terminal, tapez :
+## Télécharger Pi-Apps : 
+Tapez `wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash`
 
-`sudo apt-get install unclutter`
+## Télécharger Autostar à partir de Pi-Apps : 
+Lisez cette répertoire: https://github.com/Botspot/autostar
 
-`sudo apt-get install x11-xserver-utils`
+## Ajouter une tâche au démarrage:
+![image](https://github.com/user-attachments/assets/2c8a8abb-0efc-4de6-8f1d-8b1f513d94d7)
+# Instructions:
+* Cliquer sur '+ add'
+*  Filename: `kiosk.desktop` 
+*  Display name: `kiosk startup` 
+*  Command to run: `chromium-browser --fullscreen --noerrordialog --kiosk http://localhost/`
+*  Puis `OK`
 
-## Créer les répertoires suivants :
-Dans le terminal, tapez:
+# Vous pouvez maintenant redémarrer la Raspberry
 
-`mkdir ~/.config/lxsession`
-
-`mkdir ~/.config/lxsession/LXDE-pi`
-
-## Puis créer et éditer le fichier autostart : 
-Tapez `nano ~/.config/lxsessions/LXDE-pi/autostart`
-
-Y placer le texte suivant :
-```
-#@lxpanel --profile LXDE-pi
-#@pcmanfm --desktop --profile LXDE-pi
-#@xscreensaver -no-splash	
-
-@xset s off
-@xset -dpms
-@xset s noblank
-@unclutter -idle 0
-@chromium-browser --noerrdialogs --start-fullscreen https://localhost/
-@xscreensaver -no-splash	
-```
-
-## Configurer le temps de rafraichissement du slide
-Pour que le Google Slide soit rafraichit pour pouvoir afficher le contenu modifié, veuillez partir dans le fichier `index.html` vers la ligne 308.
-Entrez le temps souhaité, par défaut il est à 5 min. 
