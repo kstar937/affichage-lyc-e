@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficheur</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f3f4f6;
+            color: #333;
+            margin: 0;
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "main main side"
+                "footer footer footer";
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #datetime {
+            grid-area: header;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        #images {
+            grid-area: footer;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        #images img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        iframe {
+            grid-area: main;
+            border: none;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        #weather {
+            grid-area: side;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+        }
+
+        .weather-widget {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+}
+
+.location {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-info .icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.temperature {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #333;
+}
+
+.details div {
+    width: 100px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.weather-container {
+    width: 300px;
+    margin: 10px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.weather-slider {
+    display: grid;
+    grid-auto-rows: 300px; /* Each "weather-day" element will be 400px tall */
+    transition: transform 0.5s ease;
+}
+
+.weather-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+}
+
+.date {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #333;
+}
+
+.details div {
+    width: 100px;
+}
+
+/* Scrollbar hidden */
+.weather-slider::-webkit-scrollbar {
+    display: none;
+}
+
+
+.logo-container {
+    margin: 10px;
+    width: 300px;
+    height: 300px; /* Fixed height for showing one logo at a time */
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.logo-slider {
+    display: grid;
+    grid-auto-rows: 300px; /* Each "logo-item" will be 300px tall */
+    transition: transform 0.5s ease;
+}
+
+.logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the logos fit within the container */
+}
+
+.logo-slider1 {
+    display: grid;
+    grid-auto-rows: 300px; /* Each "logo-item" will be 300px tall */
+    transition: transform 0.5s ease;
+}
+
+.logo-item1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-item1 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the logos fit within the container */
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    width: 300px;
+    margin: 10px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.card-header {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    color: #333 !important;
+}
+
+.card-body {
+    font-size: 1.2em !important;
+    margin-top: 10px !important;
+    color: #444 !important;
+    padding: 10px;
+    text-align: center;
+}
+
+#time {
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+#date1 {
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div id="datetime"></div>
+
+    <iframe id="googleSlide" src="" allowfullscreen></iframe>
+
+    <div id="weather">
+        <div class="card">
+            <div class="card-body">
+                <div id="date1">--/--/----</div>
+                <div id="time">--:--:--</div>
+            </div>
+        </div>
+        <div class="weather-container">
+            <div class="weather-slider" id="weather-slider">
+                <!-- Day 1 -->
+                <div class="weather-day">
+                    <div class="date" id="date-day1">Date 1</div>
+                    <div class="temperature" id="temp-day1">--°C</div>
+                    <div class="description" id="desc-day1">--</div>
+                    <div class="humidity">Humidité: <span id="humidity-day1">--%</span></div>
+                    <div class="wind">Vent: <span id="wind-day1">-- m/s</span></div>
+                </div>
+    
+                <!-- Day 2 -->
+                <div class="weather-day">
+                    <div class="date" id="date-day2">Date 2</div>
+                    <div class="temperature" id="temp-day2">--°C</div>
+                    <div class="description" id="desc-day2">--</div>
+                    <div class="humidity">Humidité: <span id="humidity-day2">--%</span></div>
+                    <div class="wind">Vent: <span id="wind-day2">-- m/s</span></div>
+                </div>
+    
+                <!-- Day 3 -->
+                <div class="weather-day">
+                    <div class="date" id="date-day3">Date 3</div>
+                    <div class="temperature" id="temp-day3">--°C</div>
+                    <div class="description" id="desc-day3">--</div>
+                    <div class="humidity">Humidité: <span id="humidity-day3">--%</span></div>
+                    <div class="wind">Vent: <span id="wind-day3">-- m/s</span></div>
+                </div>
+    
+                <!-- Day 4 -->
+                <div class="weather-day">
+                    <div class="date" id="date-day4">Date 4</div>
+                    <div class="temperature" id="temp-day4">--°C</div>
+                    <div class="description" id="desc-day4">--</div>
+                    <div class="humidity">Humidité: <span id="humidity-day4">--%</span></div>
+                    <div class="wind">Vent: <span id="wind-day4">-- m/s</span></div>
+                </div>
+
+            </div>
+        </div>
+    
+
+        <div class="logo-container">
+            <div class="logo-slider" id="logo-slider">
+                <!-- Logo 1 -->
+                <div class="logo-item">
+                    <img src="logo1.png" alt="Logo 1">
+                </div>
+    
+                <!-- Logo 2 -->
+                <div class="logo-item">
+                    <img src="logo2.png" alt="Logo 2">
+                </div>
+    
+                <!-- Logo 3 -->
+                <div class="logo-item">
+                    <img src="logo3.png" alt="Logo 3">
+                </div>
+    
+                <!-- Add more logos as needed -->
+            </div>
+        </div>
+
+        
+        <div class="logo-container">
+            <div class="logo-slider1" id="logo-slider1">
+                <!-- Logo 1 -->
+                <div class="logo-item1">
+                    <img src="logo1.png" alt="Logo 1">
+                </div>
+    
+                <!-- Logo 2 -->
+                <div class="logo-item1">
+                    <img src="logo2.png" alt="Logo 2">
+                </div>
+    
+                <!-- Logo 3 -->
+                <div class="logo-item1">
+                    <img src="logo3.png" alt="Logo 3">
+                </div>
+    
+                <!-- Add more logos as needed -->
+            </div>
+        </div>
+
+</div>
+    <script src="js/config.js"></script>
+
+
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
+
+    const LATITUDE = 59.91; // Example latitude (Oslo, Norway)
+    const LONGITUDE = 10.75; // Example longitude (Oslo, Norway)
+    const ELEVATION = 100; // Example elevation in meters
+
+    const apiUrl = `https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${LATITUDE}&lon=${LONGITUDE}&altitude=${ELEVATION}`;
+
+    fetch(apiUrl, {
+        headers: {
+            'User-Agent': 'YourAppName/1.0' // Replace with your app name to comply with API guidelines
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const timeseries = data.properties.timeseries;
+        const today = new Date();
+
+        // Loop through the first 7 days and populate the weather slider
+        for (let i = 0; i < 4; i++) {
+            // Safely check if there is data for this day
+            if (!timeseries[i * 24]) {
+                console.warn(`No data available for day ${i + 1}`);
+                continue; // Skip this day if no data is available
+            }
+
+            const forecast = timeseries[i * 24]?.data?.instant?.details; // Safely access forecast data
+            if (!forecast) {
+                console.warn(`No forecast details available for day ${i + 1}`);
+                continue; // Skip if forecast details are missing
+            }
+
+            const temperature = Math.round(forecast.air_temperature || 0); // Fallback to 0 if undefined
+            const humidity = Math.round(forecast.relative_humidity || 0); // Fallback to 0 if undefined
+            const windSpeed = Math.round(forecast.wind_speed || 0); // Fallback to 0 if undefined
+            const next6Hours = timeseries[i * 24]?.data?.next_6_hours; // Safely access next_6_hours
+            const nextHourForecast = next6Hours ? next6Hours.summary.symbol_code : 'default'; // Fallback if summary is missing
+
+            console.log(nextHourForecast)
+            // Calculate the date for each day
+            const forecastDate = new Date(today);
+            forecastDate.setDate(today.getDate() + i);
+            const formattedDate = forecastDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' });
+
+            // Set weather data to the DOM for each day
+            document.getElementById(`date-day${i+1}`).textContent = formattedDate;
+            document.getElementById(`temp-day${i+1}`).textContent = `${temperature}°C`;
+            document.getElementById(`humidity-day${i+1}`).textContent = `${humidity}%`;
+            document.getElementById(`wind-day${i+1}`).textContent = `${windSpeed} m/s`;
+            document.getElementById(`desc-day${i+1}`).textContent = translateWeatherDescription(nextHourForecast);
+        }
+    })
+    .catch(error => console.error('Erreur lors de la récupération des données météorologiques:', error));
+
+    // Helper function to translate weather description to French
+    function translateWeatherDescription(symbolCode) {
+        const symbolTranslation = {
+            'clearsky_day': 'Ciel dégagé',
+            'clearsky_night': 'Ciel clair',
+            'cloudy': 'Nuageux',
+            'fair_day': 'Beau temps',
+            'fair_night': 'Nuit dégagée',
+            'fog': 'Brouillard',
+            'heavyrain': 'Pluie forte',
+            'lightrain': 'Pluie légère',
+            'partlycloudy_day': 'Partiellement nuageux',
+            'partlycloudy_night': 'Nuit partiellement nuageuse',
+            'rain': 'Pluie',
+            'snow': 'Neige',
+            'sleet': 'Neige fondue',
+            'thunderstorm': 'Orage',
+            'default': 'Inconnu'
+        };
+
+        return symbolTranslation[symbolCode] || symbolTranslation['default'];
+    }
+    function updateTimeAndDate() {
+            const now = new Date();
+    
+            // Format time
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+            // Format date
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('fr-FR', options);
+    
+            // Update DOM elements
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('date1').textContent = formattedDate;
+        }
+
+
+
+
+    let currentSlide1 = 0;
+    const totalSlides1 = document.querySelectorAll('.logo-item').length;
+
+    let currentSlide2 = 0;
+    const totalSlides2 = document.querySelectorAll('.logo-item1').length;
+
+    // Scroll the slider
+    let currentSlide = 0;
+    const totalSlides = 4;
+    setInterval(() => {
+        currentSlide1 = (currentSlide1 + 1) % totalSlides1;
+        document.getElementById("logo-slider").style.transform = `translateY(-${currentSlide1 * 300}px)`;
+
+        currentSlide2 = (currentSlide2 + 1) % totalSlides2;
+        document.getElementById("logo-slider1").style.transform = `translateY(-${currentSlide2 * 300}px)`;
+
+        currentSlide = (currentSlide + 1) % totalSlides;
+        document.getElementById("weather-slider").style.transform = `translateY(-${currentSlide * 300}px)`;
+    }, 3000);
+
+    setInterval(updateTimeAndDate, 1000);
+        function loadSlide() {
+    return document.getElementById("googleSlide").src = SLIDE_URL;
+}
+setInterval("loadSlide()", 200000);
+
+    loadSlide();
+    updateTimeAndDate();
+});
+
+
+
+    </script>
+    
+</body>
+</html>
